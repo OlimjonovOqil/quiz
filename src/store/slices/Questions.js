@@ -47,8 +47,11 @@ const Questions = createSlice({
     },
     answer(state, action) {
       state.questions[state.currentQuestion.id - 1].isAnswered = "true";
+      state.currentQuestion.isAnswered = "true";
       state.questions[state.currentQuestion.id - 1].selected =
         action.payload.id;
+      state.currentQuestion.selected = action.payload.id;
+
       if (action.payload.id === state.currentQuestion.correct) {
         state.questions[state.currentQuestion.id - 1].isCorrectAnswer = "true";
         state.correctAnswers += 1;
@@ -64,12 +67,15 @@ const Questions = createSlice({
     selectAnswer(state, action) {
       state.currentQuestion.select[action.payload.id - 1].selected =
         action.payload;
-
       state.questions[state.currentQuestion.id - 1].select[
         action.payload.id - 1
       ].selected = action.payload;
 
       state.currentQuestion.selectedAnswers = [
+        ...state.currentQuestion.selectedAnswers,
+        action.payload,
+      ];
+      state.questions[state.currentQuestion.id - 1].selectedAnswers = [
         ...state.currentQuestion.selectedAnswers,
         action.payload,
       ];
@@ -81,7 +87,6 @@ const Questions = createSlice({
         state.questions[state.currentQuestion.id - 1].select[
           action.payload.id - 1
         ].isCorrect = "true";
-
         state.currentQuestion.select[action.payload.id - 1].isCorrect = "true";
       }
 
@@ -108,6 +113,7 @@ const Questions = createSlice({
         ) {
           state.questions[state.currentQuestion.id - 1].isCorrectAnswer =
             "true";
+          state.currentQuestion.isCorrectAnswer = "true";
 
           state.correctAnswers += 1;
         }

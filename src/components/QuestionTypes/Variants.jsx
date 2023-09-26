@@ -24,6 +24,9 @@ const Variants = ({ question }) => {
     setCorrected(null);
   }, [question.id]);
 
+  console.log(question);
+
+
   return (
     <VariantsWrapper>
       {question.variants.map((item) => {
@@ -41,13 +44,15 @@ const Variants = ({ question }) => {
         }
         return (
           <Variant
-            onClick={() => question.isAnswered === "false" && updateData(item)}
+            onClick={() =>
+              (question.isAnswered === "false") && updateData(item)
+            }
             $isSelected={isslected}
             $isCorrect={iscorrect}
             $correct={correct}
             key={item.id}
           >
-            {item.id}.{" "}
+            {item.id}.
             {item.isCorrect === "true" ? `${item.variant} ✓` : item.variant}
           </Variant>
         );

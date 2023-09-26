@@ -48,7 +48,7 @@ const Testing = () => {
       ) : (
         <>
           <Pagination questions={questions} />
-          <Tests question={currentQuestion} />
+          <Tests />
           {questionIndex === questions.length - 1 ? (
             <NextQuestion onClick={() => dispatch(finishTest())}>
               Finish

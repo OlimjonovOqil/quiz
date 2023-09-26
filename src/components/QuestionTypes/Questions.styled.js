@@ -18,21 +18,23 @@ export const VariantsWrapper = styled.div`
 
 export const Variant = styled.div`
   width: ${({ $w }) => $w || "100%"};
+  text-align: start;
+  font-size: 16px;
   padding: 10px 12px;
   border: 1px solid ${Colors.background};
   cursor: pointer;
-  cursor: pointer;
-  border: 1px solid black;
-  padding: 10px;
   background-color: ${({ $isSelected, $isCorrect, $correct }) => {
-    if (($isSelected && $isCorrect) || (!$isSelected && $isCorrect && $correct)) {
+    if (
+      ($isSelected && $isCorrect) ||
+      (!$isSelected && $isCorrect && $correct)
+    ) {
       return "green";
     }
     if ($isSelected && !$isCorrect) {
       return "red";
     }
-    if (!$isCorrect && !$isSelected) {
-      return "transparent";
+    if (!$isCorrect && !$isSelected && $correct) {
+      return "white";
     }
   }};
 
