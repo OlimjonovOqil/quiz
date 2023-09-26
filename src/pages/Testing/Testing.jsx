@@ -9,10 +9,12 @@ import Tests from "../../components/Tests/Tests";
 import Pagination from "../../components/Paginatoin/Pagination";
 import {
   endTest,
+  finishTest,
   getQuestion,
   nextQuestion,
   startTest,
 } from "../../store/slices/Questions";
+import FinishTest from "../../components/FinishTest/FinishTest";
 
 const Testing = () => {
   const { questions, currentQuestion, questionIndex, testStatus } = useSelector(
@@ -26,9 +28,6 @@ const Testing = () => {
     dispatch(getQuestion(0));
   }
 
-  function ending() {
-    dispatch(endTest());
-  }
 
   return (
     <Layout>
@@ -42,33 +41,23 @@ const Testing = () => {
           / Testing
         </Paragraph>
       </SectionName>
-      {!testStatus ? (
+      {!testStatus  ? (
         <StartTest starting={starting} />
+      ) : testStatus === "finished" ? (
+        <FinishTest />
       ) : (
         <>
           <Pagination questions={questions} />
           <Tests question={currentQuestion} />
           {questionIndex === questions.length - 1 ? (
-            <Link to="/" onClick={ending}>
-              <NextQuestion>Finish</NextQuestion>
-            </Link>
+            <NextQuestion onClick={() => dispatch(finishTest())}>
+              Finish
+            </NextQuestion>
           ) : (
             <NextQuestion onClick={() => dispatch(nextQuestion())}>
               Next
             </NextQuestion>
           )}
-          {/* <NextQuestion
-            dp={questionIndex === questions.length - 1 ? "none" : "block"}
-            onClick={() => dispatch(nextQuestion())}
-          >
-            Next
-          </NextQuestion>
-          <NextQuestion
-            dp={questionIndex === questions.length - 1 ? "none" : "block"}
-            onClick={() => dispatch(nextQuestion())}
-          >
-            Finish
-          </NextQuestion> */}
         </>
       )}
     </Layout>

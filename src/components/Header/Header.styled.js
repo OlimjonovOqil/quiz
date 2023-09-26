@@ -5,6 +5,7 @@ export const Navbar = styled.div`
   background-color: ${Colors.background};
   padding: 27px 0;
   position: fixed;
+  z-index: 10;
   top: 0;
   left: 0;
   right: 0;

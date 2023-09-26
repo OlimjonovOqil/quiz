@@ -13,18 +13,19 @@ export const PaginationItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: ${({ bg }) => bg}; */
-  /* background-color: ${({ bg }) =>
-    bg === "true" ? Colors.green : bg === "false" ? Colors.red : bg}; */
-  background-color: ${({ bg }) => {
-    // if (bg === "no") {
-    //   return Colors.background;
-    // } else if (bg === true) {
-    //   return "green";
-    // } else if (bg === false) {
-    //   return "red";
-    // }
-    return bg || Colors.background;
-  }};
+  background-color: ${({ $bg }) => $bg};
+  color: ${({ $clr }) => $clr && Colors.white};
   cursor: pointer;
+  position: relative;
+`;
+
+export const CurrentItem = styled.div`
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 5px solid black;
+  bottom: -7px;
+  display: ${({ $dp }) => $dp};
 `;

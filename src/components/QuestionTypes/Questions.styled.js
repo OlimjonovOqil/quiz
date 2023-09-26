@@ -24,27 +24,27 @@ export const Variant = styled.div`
   cursor: pointer;
   border: 1px solid black;
   padding: 10px;
-  background-color: ${({ isSelected, isCorrect, correct }) => {
-    if ((isSelected && isCorrect) || (!isSelected && isCorrect && correct)) {
+  background-color: ${({ $isSelected, $isCorrect, $correct }) => {
+    if (($isSelected && $isCorrect) || (!$isSelected && $isCorrect && $correct)) {
       return "green";
     }
-    if (isSelected && !isCorrect) {
+    if ($isSelected && !$isCorrect) {
       return "red";
     }
-    if (!isCorrect && !isSelected) {
+    if (!$isCorrect && !$isSelected) {
       return "transparent";
     }
   }};
 
-  color: ${({ isSelected, isCorrect, correct }) => {
+  color: ${({ $isSelected, $isCorrect, $correct }) => {
     if (
-      (isSelected && isCorrect) ||
-      (!isSelected && isCorrect && correct) ||
-      (isSelected && !isCorrect)
+      ($isSelected && $isCorrect) ||
+      (!$isSelected && $isCorrect && $correct) ||
+      ($isSelected && !$isCorrect)
     ) {
       return "white";
     }
-    if (!isCorrect && !isSelected) {
+    if (!$isCorrect && !$isSelected) {
       return "black";
     }
   }};

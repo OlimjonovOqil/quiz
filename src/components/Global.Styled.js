@@ -11,6 +11,7 @@ export const Paragraph = styled.p.attrs((props) => ({
   color: ${({ $clr }) => $clr || Colors.primary};
   padding-bottom: ${({ $pb }) => $pb || 0};
   opacity: ${({ $op }) => $op || 1};
+  text-align: ${({$ta }) => $ta || "start"};
 `;
 
 export const Wrapper = styled.div`
