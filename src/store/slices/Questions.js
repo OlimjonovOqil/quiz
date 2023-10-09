@@ -47,10 +47,8 @@ const Questions = createSlice({
     },
     answer(state, action) {
       state.questions[state.currentQuestion.id - 1].isAnswered = "true";
-      state.currentQuestion.isAnswered = "true";
       state.questions[state.currentQuestion.id - 1].selected =
         action.payload.id;
-      state.currentQuestion.selected = action.payload.id;
 
       if (action.payload.id === state.currentQuestion.correct) {
         state.questions[state.currentQuestion.id - 1].isCorrectAnswer = "true";

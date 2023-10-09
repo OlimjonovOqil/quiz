@@ -7,6 +7,7 @@ const Variants = ({ question }) => {
   const [select, setSelect] = useState(null);
   const [corrected, setCorrected] = useState(null);
 
+
   const dispatch = useDispatch();
 
   const updateData = async (item) => {
@@ -23,9 +24,6 @@ const Variants = ({ question }) => {
     setSelect(null);
     setCorrected(null);
   }, [question.id]);
-
-  console.log(question);
-
 
   return (
     <VariantsWrapper>
@@ -44,9 +42,7 @@ const Variants = ({ question }) => {
         }
         return (
           <Variant
-            onClick={() =>
-              (question.isAnswered === "false") && updateData(item)
-            }
+            onClick={() => question.isAnswered === "false" && updateData(item)}
             $isSelected={isslected}
             $isCorrect={iscorrect}
             $correct={correct}

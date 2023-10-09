@@ -1,5 +1,3 @@
-import { answer } from "./slices/Questions";
-
 export const questions = [
   {
     id: 1,

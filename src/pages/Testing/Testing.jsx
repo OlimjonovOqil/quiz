@@ -17,7 +17,7 @@ import {
 import FinishTest from "../../components/FinishTest/FinishTest";
 
 const Testing = () => {
-  const { questions, currentQuestion, questionIndex, testStatus } = useSelector(
+  const { questions, questionIndex, testStatus } = useSelector(
     (state) => state.questions
   );
 

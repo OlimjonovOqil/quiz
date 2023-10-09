@@ -12,7 +12,7 @@ const SelectType = ({ question }) => {
 
   const [selected, setSelected] = useState([]);
 
-  function answered(select, option, value) {
+  function answered(select, option) {
     setSelected([...selected, { id: select, answer: option }]);
   }
 
@@ -20,7 +20,7 @@ const SelectType = ({ question }) => {
     <>
       <QuestionTitle>{question.question}</QuestionTitle>
       <VariantsWrapper>
-        {question.select.map((select, index) => {
+        {question.select.map((select) => {
           const iscorrect =
             selected.length && selected.find((item) => item.id === select.id);
 
@@ -42,23 +42,17 @@ const SelectType = ({ question }) => {
             <S.SelectWrapper key={select.id}>
               <S.SelectImage src={select.image} />
               <S.Select
-                id={"select" + select.id}
                 defaultValue={
                   select.selected
                     ? JSON.stringify(select.selected)
                     : "select match"
                 }
                 onChange={(e) => {
-                  answered(
-                    select.id,
-                    JSON.parse(e.target.value).id,
-                    e.target.value
-                  );
+                  answered(select.id, JSON.parse(e.target.value).id);
                   dispatch(
                     selectAnswer({
                       id: select.id,
                       answer: JSON.parse(e.target.value).id,
-                      option: JSON.parse(e.target.value).option,
                     })
                   );
                 }}
