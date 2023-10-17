@@ -49,12 +49,18 @@ const FinishTest = () => {
           onClick={() => {
             dispatch(startTest());
             dispatch(getQuestion(0));
+            window.scrollTo({ top: 0, behavior: "smooth" });
           }}
         >
           Try again
         </S.AgainButton>
         <Link to="/">
-          <S.BackButton onClick={() => dispatch(endTest())}>
+          <S.BackButton
+            onClick={() => {
+              dispatch(endTest());
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          >
             Back to tests
           </S.BackButton>
         </Link>

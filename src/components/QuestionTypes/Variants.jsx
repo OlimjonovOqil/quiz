@@ -7,7 +7,6 @@ const Variants = ({ question }) => {
   const [select, setSelect] = useState(null);
   const [corrected, setCorrected] = useState(null);
 
-
   const dispatch = useDispatch();
 
   const updateData = async (item) => {
@@ -28,28 +27,28 @@ const Variants = ({ question }) => {
   return (
     <VariantsWrapper>
       {question.variants.map((item) => {
-        let isslected;
+        let isselected;
         let iscorrect;
         let correct;
-        if (question.isAnswered === "true") {
-          isslected = question.selected === item.id;
-          iscorrect = item.isCorrect === "true";
-          correct = !!question.isCorrectAnswer;
+        if (question.isAnswered) {
+          isselected = question.selected === item.id;
+          iscorrect = item.isCorrect;
+          correct = question.isCorrectAnswer;
         } else {
-          isslected = select === item.id;
-          iscorrect = item.isCorrect === "true";
+          isselected = select === item.id;
+          iscorrect = item.isCorrect;
           correct = corrected;
         }
+        
         return (
           <Variant
-            onClick={() => question.isAnswered === "false" && updateData(item)}
-            $isSelected={isslected}
-            $isCorrect={iscorrect}
+            onClick={() => !question.isAnswered && updateData(item)}
+            $isSelected={isselected}
+            $isCorrect={item.isCorrect}
             $correct={correct}
             key={item.id}
           >
-            {item.id}.
-            {item.isCorrect === "true" ? `${item.variant} ✓` : item.variant}
+            {item.id}.{item.isCorrect ? `${item.variant} ✓` : item.variant}
           </Variant>
         );
       })}

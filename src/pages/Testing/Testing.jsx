@@ -27,7 +27,6 @@ const Testing = () => {
     dispatch(getQuestion(0));
   }
 
-
   return (
     <Layout>
       <SectionName>
@@ -40,7 +39,7 @@ const Testing = () => {
           / Testing
         </Paragraph>
       </SectionName>
-      {!testStatus  ? (
+      {!testStatus ? (
         <StartTest starting={starting} />
       ) : testStatus === "finished" ? (
         <FinishTest />
@@ -49,11 +48,21 @@ const Testing = () => {
           <Pagination questions={questions} />
           <Tests />
           {questionIndex === questions.length - 1 ? (
-            <NextQuestion onClick={() => dispatch(finishTest())}>
+            <NextQuestion
+              onClick={() => {
+                dispatch(finishTest());
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            >
               Finish
             </NextQuestion>
           ) : (
-            <NextQuestion onClick={() => dispatch(nextQuestion())}>
+            <NextQuestion
+              onClick={() => {
+                dispatch(nextQuestion());
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            >
               Next
             </NextQuestion>
           )}

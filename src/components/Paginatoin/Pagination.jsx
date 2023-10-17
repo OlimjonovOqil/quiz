@@ -7,15 +7,13 @@ const Pagination = () => {
   const { questionIndex,questions } = useSelector((state) => state.questions);
   const dispatch = useDispatch();
 
-  console.log(questionIndex);
-  console.log(questions);
   return (
     <S.Pagination>
       {questions &&
         questions.map((step) => {
           let bg;
-          if (step.isAnswered === "true") {
-            step.isCorrectAnswer === "true"
+          if (step.isAnswered) {
+            step.isCorrectAnswer
               ? (bg = Colors.green)
               : (bg = Colors.red);
           } else {
@@ -24,7 +22,7 @@ const Pagination = () => {
           return (
             <S.PaginationItem
               $bg={bg}
-              $clr={step.isAnswered === "true"}
+              $clr={step.isAnswered}
               key={step.id}
               onClick={() => dispatch(getQuestion(step.id - 1))}
             >

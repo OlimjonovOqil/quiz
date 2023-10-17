@@ -27,7 +27,7 @@ const SelectType = ({ question }) => {
           let color;
 
           if (select.selected) {
-            if (select.isCorrect === "true") {
+            if (select.isCorrect) {
               color = `1px solid ${Colors.green}`;
             } else color = `1px solid ${Colors.red}`;
           } else {
@@ -68,9 +68,7 @@ const SelectType = ({ question }) => {
                 {select.options.map((option) => {
                   return (
                     <S.Option key={option.id} value={JSON.stringify(option)}>
-                      {option.isCorrect === "true"
-                        ? `${option.option} ✓`
-                        : option.option}
+                      {option.isCorrect ? `${option.option} ✓` : option.option}
                     </S.Option>
                   );
                 })}

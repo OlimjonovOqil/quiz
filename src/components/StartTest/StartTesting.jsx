@@ -6,8 +6,6 @@ const StartTest = ({ starting }) => {
   function handleClick() {
     window.scrollTo({ top: 0, behavior: "smooth" });
     starting();
-
-    // localStorage.setItem("start", true);
   }
 
   return (

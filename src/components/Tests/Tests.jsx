@@ -12,7 +12,6 @@ const Tests = () => {
     return <div>No data</div>;
   }
 
-  console.log(questions[questionIndex]);
 
   return (
     <>

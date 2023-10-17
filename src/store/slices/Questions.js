@@ -25,13 +25,13 @@ const Questions = createSlice({
       );
 
       state.questions.forEach((item) => {
-        item.isAnswered = "false";
+        item.isAnswered = false;
         item.selected = null;
-        item.isCorrectAnswer = "false";
+        item.isCorrectAnswer = false;
         if (item.type === "selectType" && item.select) {
           item.selectedAnswers = [];
           item.select.forEach((select) => {
-            select.isCorrect = "false";
+            select.isCorrect = false;
             select.selected = null;
           });
         }
@@ -44,10 +44,10 @@ const Questions = createSlice({
       state.questionIndex = action.payload;
     },
     answer(state, action) {
-      state.questions[state.questionIndex].isAnswered = "true";
+      state.questions[state.questionIndex].isAnswered = true;
       state.questions[state.questionIndex].selected = action.payload.id;
       if (action.payload.id === state.questions[state.questionIndex].correct) {
-        state.questions[state.questionIndex].isCorrectAnswer = "true";
+        state.questions[state.questionIndex].isCorrectAnswer = true;
         state.correctAnswers += 1;
       }
     },
@@ -80,7 +80,7 @@ const Questions = createSlice({
         ) {
           state.questions[state.questionIndex].select[
             action.payload.id - 1
-          ].isCorrect = "true";
+          ].isCorrect = true;
         }
 
         if (
@@ -94,7 +94,7 @@ const Questions = createSlice({
             state.questionIndex
           ].selectedAnswers.sort((a, b) => a.id - b.id);
 
-          state.questions[state.questionIndex].isAnswered = "true";
+          state.questions[state.questionIndex].isAnswered = true;
 
           if (
             arr1.every((item, index) => {
@@ -103,7 +103,7 @@ const Questions = createSlice({
               );
             })
           ) {
-            state.questions[state.questionIndex].isCorrectAnswer = "true";
+            state.questions[state.questionIndex].isCorrectAnswer =true;
             state.correctAnswers += 1;
           }
         }

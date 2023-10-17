@@ -26,7 +26,7 @@ export const Variant = styled.div`
   background-color: ${({ $isSelected, $isCorrect, $correct }) => {
     if (
       ($isSelected && $isCorrect) ||
-      (!$isSelected && $isCorrect && $correct)
+      (!$isSelected && $isCorrect && $correct === false)
     ) {
       return "green";
     }
@@ -41,7 +41,7 @@ export const Variant = styled.div`
   color: ${({ $isSelected, $isCorrect, $correct }) => {
     if (
       ($isSelected && $isCorrect) ||
-      (!$isSelected && $isCorrect && $correct) ||
+      (!$isSelected && $isCorrect && $correct === false) ||
       ($isSelected && !$isCorrect)
     ) {
       return "white";
