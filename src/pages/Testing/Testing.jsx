@@ -8,7 +8,6 @@ import { NextQuestion } from "../../components/QuestionTypes/Questions.styled";
 import Tests from "../../components/Tests/Tests";
 import Pagination from "../../components/Paginatoin/Pagination";
 import {
-  endTest,
   finishTest,
   getQuestion,
   nextQuestion,

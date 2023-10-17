@@ -3,10 +3,12 @@ import * as S from "./Pagination.styled";
 import { getQuestion } from "../../store/slices/Questions";
 import Colors from "../../Constants/Colors";
 
-const Pagination = ({ questions }) => {
-  const { questionIndex } = useSelector((state) => state.questions);
+const Pagination = () => {
+  const { questionIndex,questions } = useSelector((state) => state.questions);
   const dispatch = useDispatch();
 
+  console.log(questionIndex);
+  console.log(questions);
   return (
     <S.Pagination>
       {questions &&

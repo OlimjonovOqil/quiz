@@ -4,20 +4,24 @@ import SelectType from "../QuestionTypes/SelectType/SelectType";
 import { useSelector } from "react-redux";
 
 const Tests = () => {
-  const { currentQuestion } = useSelector((state) => state.questions);
+  const { questions, questionIndex } = useSelector(
+    (state) => state.questions
+  );
 
-  if (!currentQuestion) {
+  if (!questions[questionIndex]) {
     return <div>No data</div>;
   }
 
+  console.log(questions[questionIndex]);
+
   return (
     <>
-      {currentQuestion.type === "standartType" ? (
-        <StandartType question={currentQuestion} />
-      ) : currentQuestion.type === "imageType" ? (
-        <ImageType question={currentQuestion} />
+      {questions[questionIndex].type === "standartType" ? (
+        <StandartType question={questions[questionIndex]} />
+      ) : questions[questionIndex].type === "imageType" ? (
+        <ImageType question={questions[questionIndex]} />
       ) : (
-        <SelectType question={currentQuestion} />
+        <SelectType question={questions[questionIndex]} />
       )}
     </>
   );
