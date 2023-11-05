@@ -32,7 +32,7 @@ const Pagination = () => {
               />
             </S.PaginationItem>
           );
-        })}ыщ
+        })}
     </S.Pagination>
   );
 };
